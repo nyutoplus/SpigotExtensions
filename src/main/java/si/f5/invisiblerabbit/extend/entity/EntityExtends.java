@@ -8,8 +8,10 @@ import si.f5.invisiblerabbit.util.FunctionHelperAdapter;
 
 public class EntityExtends extends FunctionHelperAdapter{
 
-	public EntityExtends() {
+	EntitySpawnAccess esa;
 
+	public EntityExtends() {
+		esa = new EntitySpawnAccess();
 	}
 
 	@Override
@@ -19,17 +21,17 @@ public class EntityExtends extends FunctionHelperAdapter{
 
 	@Override
 	public void setConfig(FileConfiguration fileConfig,FileConfiguration perWorldConfig) {
-
+		esa.setConfig(fileConfig, perWorldConfig);
 	}
 
 	@Override
 	public Listener[] getListener() {
-		return null;
+		Listener[] tmp = {esa};
+		return tmp;
 	}
 
 	@Override
 	public void reload(Server server) {
-
 	}
 
 }

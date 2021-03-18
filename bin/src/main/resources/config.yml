@@ -1,0 +1,137 @@
+
+configversion: 3
+
+world:
+  unload-spawn-chunk: true
+  ticks-per-ambient-spawn:
+    enable: true
+    spawns: 1
+  ticks-per-animal-spawn:
+    enable: true
+    spawns: 400
+  ticks-per-monster-spawn:
+    enable: true
+    spawns: 1
+  ticks-per-water-ambient-spawn:
+    enable: true
+    spawns: 1
+  ticks-per-water-animal-spawn:
+    enable: true
+    spawns: 1
+
+entity:
+  enable: true
+  spawn-limit: 12800
+  breeding-limit: 3200
+  per-entity-spawn-limit: 4096
+  per-entity-breeding-limit: 4096
+  per-world:
+    enable: true
+    spawn-limit: 3200
+    breeding-limit: 1600
+    per-entity-spawn-limit: 1024
+    per-entity-breeding-limit: 1024
+  per-chunks:
+    enable: true
+    spawn-limit: 800
+    breeding-limit: 200
+    per-entity-spawn-limit: 64
+    per-entity-breeding-limit: 64
+  entities:
+    EXAMPLE:
+      has-name: false
+      per-server-spawn-limit: 1000
+      per-world-spawn-limit: 500
+      per-chunk-spawn-limit: 100
+      per-server-breeding-limit: 600
+      per-world-breeding-limit: 120
+      per-chunk-breeding-limit: 10
+      per-server-over-limit: true
+      per-world-over-limit: true
+      per-chunk-over-limit: true
+      #over-limit ≒ per server and per world and per chunks
+      over-limit: true
+    AREA_EFFECT_CLOUD:
+      over-limit: true
+    ARMOR_STAND:
+      over-limit: true
+    ALLOW:
+      over-limit: true
+    BEE:
+      over-limit: true
+    BOAT:
+      over-limit: true
+    DRAGON_FIREBALL:
+      over-limit: true
+    DROPPED_ITEM:
+      #4 large chest
+      per-chunk-per-chunk-spawn-limit: 224
+      over-limit: true
+    ENDER_PEARL:
+      over-limit: true
+    ENDER_SIGNAL:
+      over-limit: true
+    EXPERIENCE_ORB:
+      spawn-limit: 200
+      over-limit: true
+    FALLING_BLOCK:
+      over-limit: true
+    FIREBALL:
+      over-limit: true
+    FIREWORK:
+      over-limit: true
+    FISHING_HOOK:
+      over-limit: true
+    HORSE:
+      over-limit: true
+    IRON_GOLEM:
+      over-limit: true
+    ITEM_FRAME:
+      per-chunk-spawn-limit: 256
+      over-limit: true
+    LEASH_HITCH:
+      per-chunk-spawn-limit: 128
+      over-limit: true
+    LIGHTNING:
+      over-limit: true
+    LLAMA_SPIT:
+      over-limit: true
+    MINECART:
+      over-limit: true
+    MINECART_CHEST:
+      over-limit: true
+    MINECART_FURNACE:
+      over-limit: true
+    MINECART_HOPPER:
+      over-limit: true
+    MINECART_TNT:
+      over-limit: true
+    PAINTING:
+      over-limit: true
+    PRIMED_TNT:
+      per-chunk-spawn-limit: 256
+      over-limit: true
+    SHULKER_BULLET:
+      over-limit: true
+    SLIME:
+      over-limit: true
+    SNOWBALL:
+      over-limit: true
+    SNOWMAN:
+      over-limit: true
+    SPECTRAL_ARROW:
+      over-limit: true
+    SPLASH_POTION:
+      over-limit: true
+    THROWN_EXP_BOTTLE:
+      over-limit: true
+    TRIDENT:
+      over-limit: true
+    UNKNOWN:
+      over-limit: true
+    VILLAGER:
+      over-limit: true
+    WITHER:
+      over-limit: true
+    WOLF:
+      over-limit: true

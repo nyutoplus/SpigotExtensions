@@ -11,7 +11,7 @@ public class WorldExtends extends FunctionHelperAdapter {
 	WorldPropertieAccess wpa;
 
 	public WorldExtends() {
-		wpa = new  WorldPropertieAccess();
+		wpa = new WorldPropertieAccess();
 
 	}
 

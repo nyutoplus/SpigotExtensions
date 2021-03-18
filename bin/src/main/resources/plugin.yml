@@ -1,0 +1,19 @@
+name: BetterServerPerformance
+version: 0.1.3
+load: STARTUP
+author: nyuto
+website: https://invisible-rabbit.f5.si/
+main: si.f5.invisiblerabbit.BetterServerPerformance
+api-version: 1.16
+
+commands:
+  bsp:
+    description: BetterServerPerformance command
+    aliases: [betterserverperformance]
+    permission: betterserverperformance.admin
+    default: op
+
+permissions:
+  betterserverperformance.admin:
+    description: BetterServerPerformance admin performance
+    default: op

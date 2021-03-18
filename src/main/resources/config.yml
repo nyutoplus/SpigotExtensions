@@ -33,7 +33,7 @@ entity:
     per-entity-breeding-limit: 1024
   per-chunks:
     enable: true
-    spawn-limit: 800
+    spawn-limit: 400
     breeding-limit: 200
     per-entity-spawn-limit: 64
     per-entity-breeding-limit: 64
@@ -55,7 +55,10 @@ entity:
       over-limit: true
     ARMOR_STAND:
       over-limit: true
-    ALLOW:
+    ARROW:
+      per-server-spawn-limit: 16384
+      per-world-spawn-limit: 2048
+      per-chunk-spwan-limit: 256
       over-limit: true
     BEE:
       over-limit: true
@@ -64,8 +67,8 @@ entity:
     DRAGON_FIREBALL:
       over-limit: true
     DROPPED_ITEM:
-      #4 large chest
-      per-chunk-per-chunk-spawn-limit: 224
+      #6 large chest
+      per-chunk-spwan-limit: 324
       over-limit: true
     ENDER_PEARL:
       over-limit: true

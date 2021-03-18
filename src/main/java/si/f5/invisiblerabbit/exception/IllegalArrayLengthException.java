@@ -2,12 +2,14 @@ package si.f5.invisiblerabbit.exception;
 
 public class IllegalArrayLengthException extends RuntimeException {
 
-	public IllegalArrayLengthException() {
-		super();
-	}
+    static final long serialVersionUID = 0x01L;
 
-	public IllegalArrayLengthException(String msg) {
-		super(msg);
-	}
+    public IllegalArrayLengthException() {
+	super();
+    }
+
+    public IllegalArrayLengthException(String msg) {
+	super(msg);
+    }
 
 }

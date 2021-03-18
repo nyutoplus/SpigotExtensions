@@ -1,0 +1,39 @@
+
+configversion: 3
+
+exampleworld:
+  unload-spawn-chunk: false
+  ticks-per-ambient-spawn:
+    enable: true
+    spawns: 1
+  ticks-per-animal-spawn:
+    enable: true
+    spawns: 400
+  ticks-per-monster-spawn:
+    enable: true
+    spawns: 1
+  ticks-per-water-ambient-spawn:
+    enable: true
+    spawns: 1
+  ticks-per-water-animal-spawn:
+    enable: true
+    spawns: 1
+  entity:
+    spawn-limit: 1000
+    breeding-limit: 1000
+    per-entity-spawn-limit: 200
+    per-entity-breeding-limit: 200
+    per-chunks:
+      spawn-limit: 120
+      breeding-limit: 120
+      per-entity-spawn-limit: 200
+      per-entity-breeding-limit: 200
+    entities:
+      EXAMPLE:
+        per-world-spawn-limit: 200
+        per-chunk-spawn-limit: 12
+        per-world-breeding-limit: 100
+        per-chunk-breeding-limit: 121
+        per-world-over-limit: false
+        per-chunk-over-limit: false
+  
