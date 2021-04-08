@@ -16,8 +16,6 @@ import org.bukkit.event.world.ChunkUnloadEvent;
 import org.bukkit.event.world.WorldInitEvent;
 import org.bukkit.event.world.WorldUnloadEvent;
 
-import si.f5.invisiblerabbit.extend.world.EntityCount;
-
 public class EntitySpawnAccess implements Listener {
 
     private boolean isServerLimits;
@@ -224,8 +222,7 @@ public class EntitySpawnAccess implements Listener {
     private Map<String, Map<String, Integer>> getPerWorldPerEntityMaps(FileConfiguration config, String path, String subPath, int def) {
 	Map<String, Map<String, Integer>> tmp = new HashMap<String, Map<String, Integer>>();
 	for (String i : config.getConfigurationSection("").getKeys(false)) {
-	    if (i.equals("configversion"))
-		continue;
+	    if (i.equals("configversion")) continue;
 	    Map<String, Integer> secTmp = new HashMap<String, Integer>();
 	    for (String j : config.getConfigurationSection(i + "." + path).getKeys(false)) {
 		String fullPath = i + "." + path + "." + j + "." + subPath;
@@ -247,8 +244,7 @@ public class EntitySpawnAccess implements Listener {
     private Map<String, Map<String, Boolean>> getPerWorldPerEntityMaps(FileConfiguration config, String path, String subPath, boolean def) {
 	Map<String, Map<String, Boolean>> tmp = new HashMap<String, Map<String, Boolean>>();
 	for (String i : config.getConfigurationSection("").getKeys(false)) {
-	    if (i.equals("configversion"))
-		continue;
+	    if (i.equals("configversion")) continue;
 	    Map<String, Boolean> secTmp = new HashMap<String, Boolean>();
 	    for (String j : config.getConfigurationSection(i + "." + path).getKeys(false)) {
 		String fullPath = i + "." + path + "." + j + "." + subPath;
@@ -289,8 +285,7 @@ public class EntitySpawnAccess implements Listener {
     public void chunkUnload(ChunkUnloadEvent e) {
 	World world = e.getWorld();
 	Chunk[] chunk = world.getLoadedChunks();
-	if (chunk.length != 0)
-	    return;
+	if (chunk.length != 0) return;
 	String worldName = world.getName();
 	worldEntitySpawns.put(worldName, 0);
 	worldPerEntitySpawns.put(worldName, new HashMap<String, Integer>());
@@ -323,8 +318,7 @@ public class EntitySpawnAccess implements Listener {
 	    int tmp = 0;
 	    for (Entity i : entity) {
 		String name = i.getType().toString() + (i.getCustomName() == null ? "" : "_HAS_NAME");
-		if (entityName.equals(name))
-		    tmp++;
+		if (entityName.equals(name)) tmp++;
 	    }
 	    if (perWorldChunksPerEntitySpawnLimits.getOrDefault(worldName, new HashMap<String, Integer>()).getOrDefault(entityName,
 		    perWorldChunksPerEntitySpawnLimit.getOrDefault(worldName, chunksPerEntitySpawnLimits.getOrDefault(entityName, chunksPerEntitySpawnLimit))) <= tmp) {
@@ -378,8 +372,7 @@ public class EntitySpawnAccess implements Listener {
 	    int tmp = 0;
 	    for (Entity i : entity) {
 		String name = i.getType().toString() + (i.getCustomName() == null ? "" : "_HAS_NAME");
-		if (entityName.equals(name))
-		    tmp++;
+		if (entityName.equals(name)) tmp++;
 	    }
 	    if (perWorldChunksPerEntityBreedingLimits.getOrDefault(worldName, new HashMap<String, Integer>()).getOrDefault(entityName,
 		    perWorldChunksPerEntityBreedingLimit.getOrDefault(worldName, chunksPerEntityBreedingLimits.getOrDefault(entityName, chunksPerEntityBreedingLimit))) <= tmp) {
@@ -412,5 +405,9 @@ public class EntitySpawnAccess implements Listener {
 	    }
 	}
 	return false;
+    }
+
+    public void unload() {
+	ec.unload();
     }
 }
