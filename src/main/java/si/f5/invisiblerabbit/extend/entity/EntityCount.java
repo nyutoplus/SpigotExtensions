@@ -44,7 +44,6 @@ public class EntityCount {
 	for (CountThread i : ct) {
 	    tmp += i.getCount();
 	}
-	System.out.println(tmp);
 	return tmp;
     }
 
