@@ -16,36 +16,30 @@ public class CountThread extends Thread {
 
     boolean works;
 
-    boolean startwait;
-    boolean finishwait;
-
     ChunkRegister register;
     int count;
 
     Map<String, Integer> entityCount;
 
-    StartTiming start;
-    EndTiming end;
+    Timings start;
+    Timings end;
+    Timings allend;
 
     Lock endlocks;
 
-    public CountThread(StartTiming st) {
+    public CountThread(Timings st, Timings en) {
 	setName("EntityCountThread-" + (threadnumber++));
 	aliveflag = true;
-	startwait = true;
-	finishwait = true;
 	start = st;
-	end = new EndTiming();
+	end = new Timings();
+	allend = en;
 	endlocks = new ReentrantLock();
     }
 
     @Override
     public void run() {
 	while (aliveflag) {
-	    startwait = true;
-	    while (startwait) {
-		start.waitTask();
-	    }
+	    start.waitTask();
 	    if (aliveflag) {
 		works = true;
 		count = 0;
@@ -64,43 +58,18 @@ public class CountThread extends Thread {
 		    }
 		}
 	    }
-	    endlocks.lock();
-	    try {
-		finishwait = false;
-		end.notifyAllTask();
-	    } finally {
-		endlocks.unlock();
-	    }
+	    end.notifyAllTask();
+	    allend.waitTask();
 	}
     }
 
     public void countEntity(ChunkRegister register) {
 	this.register = register;
-	startwait = false;
-	finishwait = true;
+	end.setFlags();
     }
 
     public void joinFinishd() {
-	try {
-	    boolean ends;
-	    endlocks.lock();
-	    try {
-		ends = finishwait;
-	    } finally {
-		endlocks.unlock();
-	    }
-	    while (ends) {
-		end.waitTask();
-		endlocks.lock();
-		try {
-		    ends = finishwait;
-		} finally {
-		    endlocks.unlock();
-		}
-	    }
-	} catch (Exception e) {
-	    e.printStackTrace();
-	}
+	end.waitTask();
     }
 
     public int getCount() {

@@ -1,6 +1,5 @@
 package si.f5.invisiblerabbit.extend.entity;
 
-import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,21 +14,22 @@ public class EntityCount {
 
     CountThread[] ct;
 
-    StartTiming st;
-
-    NumberFormat format = NumberFormat.getNumberInstance();
+    Timings st;
+    Timings en;
 
     public EntityCount(int maxThread) {
-	st = new StartTiming();
+	st = new Timings();
+	en = new Timings();
 	ct = new CountThread[maxThread];
 	for (int i = 0; i < ct.length; i++) {
-	    ct[i] = new CountThread(st);
+	    ct[i] = new CountThread(st, en);
 	    ct[i].start();
 	}
     }
 
     public void setChunks(Chunk[] c) {
 	ChunkRegister cr = new ChunkRegister(c);
+	en.setFlags();
 	for (int i = 0; i < ct.length; i++) {
 	    ct[i].countEntity(cr);
 	}
@@ -37,6 +37,8 @@ public class EntityCount {
 	for (int i = 0; i < ct.length; i++) {
 	    ct[i].joinFinishd();
 	}
+	st.setFlags();
+	en.notifyAllTask();
     }
 
     public int getCount() {
