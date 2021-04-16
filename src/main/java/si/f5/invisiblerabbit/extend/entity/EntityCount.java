@@ -27,7 +27,7 @@ public class EntityCount {
 	}
     }
 
-    public void setChunks(Chunk[] c) {
+    public synchronized void setChunks(Chunk[] c) {
 	ChunkRegister cr = new ChunkRegister(c);
 	en.setFlags();
 	for (int i = 0; i < ct.length; i++) {

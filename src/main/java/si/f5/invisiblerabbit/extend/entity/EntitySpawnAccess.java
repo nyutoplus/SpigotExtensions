@@ -101,7 +101,7 @@ public class EntitySpawnAccess implements Listener {
 	worldEntitySpawns = new HashMap<String, Integer>();
 	worldPerEntitySpawns = new HashMap<String, Map<String, Integer>>();
 
-	ec = new EntityCount(Runtime.getRuntime().availableProcessors() / 2);
+	ec = new EntityCount(Runtime.getRuntime().availableProcessors());
     }
 
     public void setConfig(FileConfiguration config, FileConfiguration perWorldConfig) {
