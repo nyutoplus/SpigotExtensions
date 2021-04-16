@@ -4,11 +4,13 @@ public class Timings {
 
     private boolean flag = true;
 
+    private static long limitMillis = 2000;
+
     public void waitTask() {
 	try {
 	    synchronized (this) {
 		while (flag) {
-		    wait();
+		    wait(limitMillis);
 		}
 	    }
 	} catch (Exception e) {
