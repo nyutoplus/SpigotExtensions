@@ -6,32 +6,26 @@ public class Timings {
 
     private static long limitMillis = 2000;
 
-    public void waitTask() {
+    public synchronized void waitTask() {
 	try {
-	    synchronized (this) {
-		while (flag) {
-		    wait(limitMillis);
-		}
+	    while (flag) {
+		wait(limitMillis);
 	    }
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}
     }
 
-    public void notifyAllTask() {
+    public synchronized void notifyAllTask() {
 	try {
-	    synchronized (this) {
-		flag = false;
-		notifyAll();
-	    }
+	    flag = false;
+	    notifyAll();
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}
     }
 
-    public void setFlags() {
-	synchronized (this) {
-	    flag = true;
-	}
+    public synchronized void setFlags() {
+	flag = true;
     }
 }
