@@ -1,5 +1,5 @@
-name: SpigotExtensions
-version: 0.1.10
+name: ${project.artifactId}
+version: ${project.version}
 load: STARTUP
 author: nyuto
 website: https://invisible-rabbit.f5.si/
