@@ -7,6 +7,7 @@ import org.bukkit.Chunk;
 
 public class EntityCount {
     int maxThread;
+    Chunk[] chunk;
     int count;
     int step;
     Map<String, Integer> perEntityCount;

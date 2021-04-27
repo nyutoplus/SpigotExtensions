@@ -1,33 +1,15 @@
 package si.f5.invisiblerabbit.extend.entity;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
 public class Timings {
 
-    private AtomicBoolean flag;
+    private boolean flag = true;
 
-    private long limitMillis;
-
-    private int limitNanos;
-
-    public Timings() {
-	this(1000, 0);
-    }
-
-    public Timings(long limitMillis) {
-	this(limitMillis, 0);
-    }
-
-    public Timings(long limitMillis, int limitNanos) {
-	flag = new AtomicBoolean(true);
-	this.limitMillis = limitMillis < 0 ? 0 : limitMillis;
-	this.limitNanos = limitNanos < 0 ? 0 : limitNanos > 999999 ? 0 : limitNanos;
-    }
+    private static long limitMillis = 2000;
 
     public synchronized void waitTask() {
 	try {
-	    while (flag.get()) {
-		wait(limitMillis, limitNanos);
+	    while (flag) {
+		wait(limitMillis);
 	    }
 	} catch (Exception e) {
 	    e.printStackTrace();
@@ -36,14 +18,14 @@ public class Timings {
 
     public synchronized void notifyAllTask() {
 	try {
-	    flag.set(false);
+	    flag = false;
 	    notifyAll();
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}
     }
 
-    public void setFlags() {
-	flag.set(true);
+    public synchronized void setFlags() {
+	flag = true;
     }
 }
