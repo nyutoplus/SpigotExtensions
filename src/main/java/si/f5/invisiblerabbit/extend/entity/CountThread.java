@@ -58,7 +58,6 @@ public class CountThread extends Thread {
 		    }
 		}
 	    }
-	    register = null;
 	    end.notifyAllTask();
 	    allend.waitTask();
 	}
