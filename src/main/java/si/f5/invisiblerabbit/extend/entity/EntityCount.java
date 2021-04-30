@@ -6,19 +6,15 @@ import java.util.Map;
 import org.bukkit.Chunk;
 
 public class EntityCount {
-    int maxThread;
-    int count;
-    int step;
-    Map<String, Integer> perEntityCount;
 
-    CountThread[] ct;
+    private CountThread[] ct;
 
-    Timings st;
-    Timings en;
+    private Timings st;
+    private Timings en;
 
     public EntityCount(int maxThread) {
 	st = new Timings();
-	en = new Timings();
+	en = new Timings(10);
 	ct = new CountThread[maxThread];
 	for (int i = 0; i < ct.length; i++) {
 	    ct[i] = new CountThread(st, en);

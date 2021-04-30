@@ -2,8 +2,6 @@ package si.f5.invisiblerabbit.extend.entity;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 import org.bukkit.Chunk;
 import org.bukkit.entity.Entity;
@@ -16,24 +14,21 @@ public class CountThread extends Thread {
 
     boolean works;
 
-    ChunkRegister register;
-    int count;
+    private ChunkRegister register;
+    private int count;
 
-    Map<String, Integer> entityCount;
+    private Map<String, Integer> entityCount;
 
-    Timings start;
-    Timings end;
-    Timings allend;
-
-    Lock endlocks;
+    private Timings start;
+    private Timings end;
+    private Timings allend;
 
     public CountThread(Timings st, Timings en) {
 	setName("EntityCountThread-" + (threadnumber++));
 	aliveflag = true;
 	start = st;
-	end = new Timings();
+	end = new Timings(10);
 	allend = en;
-	endlocks = new ReentrantLock();
     }
 
     @Override
